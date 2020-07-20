@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Page</title>
+</head>
+<body>
+Welcome Admin <br> <br>
+
+Add Image: <br>
+
+<form action="/addImage" method="post" enctype="multipart/form-data">
+    <input type="text" name="name" placeholder="Please input name"> <br>
+    <select name="category.id">
+        <option th:each="category : ${categorys}" th:value="${category.id}" th:text="${category.name}"></option>
+    </select> <br>
+    <input type="date" id="upload_date" name="upload_date"> <br>
+    <input type="file" name="image"> <br>
+    <input type="submit" value="Add">
+</form>
+
+Add Category: <br>
+
+<form action="/addCategory" method="post" enctype="multipart/form-data">
+    <input type="text" name="name" placeholder="Please input name"> <br>
+    <input type="file" name="image"> <br>
+    <input type="submit" value="Add">
+</form>
+
+<ul>
+    <div th:each="image: ${allImages}" th:remove="tag">
+        <img th:src="@{/image(name=${image.picUrl})}" width="100"
+             th:if="${image.picUrl != null && image.picUrl.length() != 0}">
+    </div>
+</ul>
+
+</body>
+</html>
