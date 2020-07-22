@@ -45,6 +45,11 @@ public class MainController {
         return "index";
     }
 
+    @GetMapping("/back")
+    public String back() {
+        return "redirect:/";
+    }
+
     @GetMapping("/images")
     public String imageByCat(@RequestParam("id") int id, Model model) {
         List<Image> allByCategory_id = imageService.findAllByCategory_Id(id);

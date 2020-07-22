@@ -22,7 +22,7 @@ public class ImageService {
     }
 
     public List<Image> findAllByCategory_Id(Integer id) {
-        return imageRepository.findAllByCategory_Id(id);
+        return imageRepository.findAllByCategoryId(id);
     }
 
 }
